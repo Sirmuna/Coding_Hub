@@ -17,10 +17,9 @@ h1{
     background-image: url('/SirMuna/MUNA_TECH/CSS/Images\ code/Rainbow-2.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
-background-image: ;
-border-style: double;
-margin: 20px;
-padding: 20px;
+    border-style: solid;
+    margin: 20px;
+    padding: 20px;
 }
 
 .red{
@@ -70,4 +69,8 @@ padding: 20px;
     padding: 10px;
     background-color: violet;
     margin-bottom: 2px;
+}
+
+.advert{
+    text-align: right;
 }
