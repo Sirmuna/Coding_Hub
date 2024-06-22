@@ -2,75 +2,47 @@
     margin: 0%;
     padding: 0%;
 }
+
+.main{
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    left: 0;
+
+}
+
 h1{
-    background-image: url('/SirMuna/MUNA_TECH/CSS/Images\ code/Rainbow.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: aliceblue;
+    border-radius: 10px;
+font-family: Georgia, 'Times New Roman', Times, serif;
+text-align: center;
+text-shadow: 2px -2px red;
+font-size: 50px;
+border: black double 5px;
+background-color: grey;
+}
+
+h3{
     border-radius: 10px;
     text-align: center;
-    border-color: rgb(253, 7, 7);
-    border-style: double;
+    text-transform: capitalize;
+    border: double darkgoldenrod 10px ;
+    background-color: aliceblue;
+    font-style: italic;
+    font-family: cursive;
 }
-   .RAINBOW-PACK{
-    border-radius: 20px;
-    background-image: url('/SirMuna/MUNA_TECH/CSS/Images\ code/Rainbow-2.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
+
+.text{
+    margin: 150px   0   0   0;
+    background-color: antiquewhite ;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+p{
+    
+    text-align-last: center;
+}
+
+.form{
+    background-color: grey;
     border-style: solid;
-    margin: 20px;
-    padding: 20px;
-}
-
-.red{
-    border-style: double;
-    padding: 10px;
-    background-color: red;
-    margin-bottom: 2px;
-}
-
-.orange{
-    border-style: double;
-    padding: 10px;
-    background-color:orange;
-    margin-bottom: 2px;
-}
-
-.yellow{
-    border-style: double;
-    padding: 10px;
-    background-color: yellow;
-    margin-bottom: 2px;
-}
-
-.green{
-    border-style: double;
-    padding: 10px;
-    background-color: green;
-    margin-bottom: 2px;
-}
-
-.blue{
-    border-style: double;
-    padding: 10px;
-    background-color: blue;
-    margin-bottom: 2px;
-}
-
-.indigo{
-    border-style: double;
-    padding: 10px;
-    background-color: indigo;
-    margin-bottom: 2px;
-}
-
-.violet{
-    border-style: double;
-    padding: 10px;
-    background-color: violet;
-    margin-bottom: 2px;
-}
-
-.advert{
-    text-align: right;
 }
