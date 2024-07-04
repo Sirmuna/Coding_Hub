@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+}
+.navigation{
+    padding:5px 10px;
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+    background-color: black;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+}
+img{
+    height: 40px;
+    width: 100%;
+}
+.navigation a{
+    color: antiquewhite;
+    text-decoration: none;
+    padding: 0px 5px;
+
+}
+.navigation a:hover{
+    background-color: rgb(29, 29, 29);
+    border-radius: 5px;
+    padding: 5px;
+}
+.navigation a:active{
+    background-color: green;
+    color: blue;
+}
+.content{
+    background-position: center;
+    background-image: url(/Class_1/Images/Rectangle_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: auto;
+    height: 100vh;
+}
+.icon{
+    display: none;
+}
+@media screen and (max-width:530px){
+    .navigation{
+        flex-direction: column;
+        background-color: black;
+        position: fixed;
+        width: 100%;
+    }
+    .navigation a{
+        padding: 0px 5px;
+    }
+}
+@media screen and (max-width:350px){
+    .link{display: none;}
+        .icon{
+            display:flex;
+            flex-direction: row;
+            padding: 0px 25px;
+            justify-content: flex-end;
+        }
+        .fa-house{
+            color: blue;
+            margin: 0px 5px;
+            font-size: larger;
+        }
+        .fa-address-card{
+            color: red;
+            margin: 0px 5px;
+            font-size: larger;
+        }
+        .fa-phone{
+            color: green;
+            margin: 0px 5px;
+            font-size: larger;
+        }
+        .fa-facebook{
+            color: blue;
+            margin: 0px 5px;
+            font-size: larger;
+        }
+        .fa-whatsapp{
+            color: green;
+            margin: 0px 5px;
+            font-size: larger;
+        }
+    }
