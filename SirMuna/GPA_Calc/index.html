@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 217, 0, 0.733);
+            background-image: url('/Flow/flow_images/Sir_Muna-BG.png');
+            background-repeat: no-repeat;
+            background-position: right;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .calculator {
+            position: sticky;
+            background-color: rgba(218, 165, 32, 0.212);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #f4f4f4;
+            color: #000;
+            padding: 10px 15px;
+            border: solid 2px gold;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: gold;
+            border: solid   2px #f4f4f4;
+        }
+        .calc{
+            display: flex;
+            flex-direction: row;
+        }
+        #calc-gpa{
+            margin-left: auto;
+        }
+        #courses {
+            margin-bottom: 20px;
+        };
+        .course {
+            background-color: #ecf0f1;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .help{
+            font-weight: bolder;
+                background-color: rgba(218, 165, 32, 0.055);
+            color: #000;
+            text-shadow: .7px .7px #fff;
+        }
+        footer{
+            background-color: transparent;
+            width: 100dvb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sir Muna GPA Calculator</h1>
+    <div class="calculator">
+        <div class="input-group">
+            <label for="courseName">Course Name:</label>
+            <input type="text" id="courseName" required>
+        </div>
+        <div class="input-group">
+            <label for="creditUnit">Credit Unit:</label>
+            <input type="number" id="creditUnit" min="1" required max="5" IF>
+        </div>
+        <div class="input-group">
+            <label for="grade">Grade:</label>
+            <select id="grade" required>
+                <option value="">Select Grade</option>
+                <option value="5">A (70-100)</option>
+                <option value="4">B (60-69)</option>
+                <option value="3">C (50-59)</option>
+                <option value="2">D (45-49)</option>
+                <option value="1">E (40-44)</option>
+                <option value="0">F (1-39)</option>
+            </select>
+    </div>
+    <div class="calc">
+        <button onclick="addCourse()">Add Course</button>
+        <div id="courses"></div>
+        <button onclick="calculateGPA()" id="calc-gpa">Calculate GPA</button>
+        <div id="result"></div>
+    </div>
+    </div>
+    <div class="help">
+        <h3>How it works</h3>
+        <p>Enter the course name, credit unit and grade. Then click on the "Add
+            Course" button to add the course to the list. Click on the "Calculate
+            GPA" button after you have added all your courses to calculate the GPA.<br> If you still don't understand, your GP is below 2.5 <strong>"no offence"</strong></p>
+        <h3>NOTE!!!</h3>
+        <P>If your GP is <strong>Above</strong> 4.5, tell everybody your result even if they didn't ask you.<br> If your GP is <strong>Below</strong> 2.0, Maintain maximum composure, you've not checked your result yet.</P>
+    </div>
+    <footer>
+        <marquee behavior="smooth" direction="ease-in-out"><h3>Copyright &copy; 2024 Sir Muna Alias The CYBER LORD</h3></marquee>
+        
+    </footer>
+    <script>
+        let courses = [];
+
+        function addCourse() {
+            const courseName = document.getElementById('courseName').value;
+            const creditUnit = parseInt(document.getElementById('creditUnit').value);
+            const grade = parseInt(document.getElementById('grade').value);
+
+            if (courseName && !isNaN(creditUnit) && !isNaN(grade)) {
+                courses.push({ name: courseName, credit: creditUnit, grade: grade });
+                updateCourseList();
+                clearInputs();
+            } else {
+                alert('Please fill all fields correctly make your steeze no reduce');
+            }
+        }
+
+        function updateCourseList() {
+            const courseList = document.getElementById('courses');
+            courseList.innerHTML = '';
+            courses.forEach((course, index) => {
+                courseList.innerHTML += `
+                    <div class="course">
+                        ${course.name} - ${course.credit} credit(s) - Grade: ${getGradeLetter(course.grade)}
+                        <button onclick="removeCourse(${index})">Remove</button>
+                    </div>
+                `;
+            });
+        }
+
+        function removeCourse(index) {
+            courses.splice(index, 1);
+            updateCourseList();
+        }
+
+        function clearInputs() {
+            document.getElementById('courseName').value = '';
+            document.getElementById('creditUnit').value = '';
+            document.getElementById('grade').value = '';
+        }
+
+        function calculateGPA() {
+            if (courses.length === 0) {
+                alert('Add at least one course make ogun no kee you.');
+                return;
+            }
+
+            let totalQualityPoints = 0;
+            let totalCredits = 0;
+
+            courses.forEach(course => {
+                totalQualityPoints += course.credit * course.grade;
+                totalCredits += course.credit;
+            });
+
+            const gpa = totalQualityPoints / totalCredits;
+            document.getElementById('result').innerText = `Your GPA is: ${gpa.toFixed(2)}`;
+        }
+
+        function getGradeLetter(grade) {
+            switch(grade) {
+                case 5: return 'A';
+                case 4: return 'B';
+                case 3: return 'C';
+                case 2: return 'D';
+                case 1: return 'E';
+                case 0: return 'F';
+                default: return 'Unknown';
+            }
+        }
+    </script>
+</body>
+</html>
